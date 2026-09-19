@@ -30,7 +30,7 @@ def create_tables(c):
                     Unique(country, region, date),
                     foreign key(country, region) references region(country, name)
                     )''')
-
+create_tables(c)
 def insert_data(c):
     c.execute(
         "INSERT INTO country VALUES (?, ?)",
@@ -79,8 +79,9 @@ def insert_data(c):
         (3, "France", "Hauts-de-France", "2017-05-25", 17.5, 71.1)
     )
 
-conn.commit()
+    conn.commit()
 
+insert_data(c)
 
 def get_country_starting_with_fr(c):
     c.execute(
